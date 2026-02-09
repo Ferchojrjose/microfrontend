@@ -10,10 +10,10 @@ const App = () => (
   <>
     <Suspense fallback={<div>Loading...</div>}>
       <Navbar />
-    </Suspense>
-    <h1 className="text-2xl font-bold">Este es el host</h1>
-    <Suspense fallback={<div>Loading...</div>}>
-      <CounterReact />
+      <div className="my-4 mx-10">
+        <h2>Counter MF</h2>
+        <CounterReact />
+      </div>
     </Suspense>
   </>
 );
