@@ -1,3 +1,6 @@
 import '../index.css';
-declare const ColorList: () => import("react/jsx-runtime").JSX.Element;
+interface ColorListProps {
+    colors: string[];
+}
+declare const ColorList: (props: ColorListProps) => import("react/jsx-runtime").JSX.Element;
 export default ColorList;
