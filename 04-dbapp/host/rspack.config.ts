@@ -9,8 +9,6 @@ import { mfConfig } from "./module-federation.config";
 
 const isDev = process.env.NODE_ENV === "development";
 
-console.log("NODE_ENV:", process.env.NODE_ENV); // Imprimiendo el entorno de ejecución
-
 // Target browsers, see: https://github.com/browserslist/browserslist
 const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
 
@@ -24,18 +22,15 @@ export default withZephyr()({
   },
 
   devServer: {
-    port: 3002,
+    port: 8080,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, "src")],
   },
   output: {
     // You need to set a unique value that is not equal to other applications
-    uniqueName: "mf_colorlist",
+    uniqueName: "host",
     // publicPath must be configured if using manifest
-    publicPath:
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3002/"
-        : "/",
+    publicPath: "http://localhost:8080/",
   },
 
   experiments: {

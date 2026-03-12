@@ -9,6 +9,8 @@ import { mfConfig } from "./module-federation.config";
 
 const isDev = process.env.NODE_ENV === "development";
 
+console.log("NODE_ENV:", process.env.NODE_ENV); // Imprimiendo el entorno de ejecución
+
 // Target browsers, see: https://github.com/browserslist/browserslist
 const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
 
@@ -30,7 +32,10 @@ export default withZephyr()({
     // You need to set a unique value that is not equal to other applications
     uniqueName: "mf_colorpicker",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:3001/",
+    publicPath:
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3001/"
+        : "/",
   },
 
   experiments: {
