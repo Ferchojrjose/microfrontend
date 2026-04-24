@@ -1,6 +1,7 @@
 {
   "name": "mf-navbar",
   "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "build": "NODE_ENV=production rspack build",
     "build:dev": "NODE_ENV=development rspack build",

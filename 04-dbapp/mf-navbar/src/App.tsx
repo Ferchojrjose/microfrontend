@@ -7,12 +7,6 @@ import "./index.css";
 const App = () => (
   <BrowserRouter>
     <Navbar />
-
-    <div className="mt-10 text-3xl mx-auto max-w-6xl">
-      <h1>Home page</h1>
-      <p>This is the home page</p>
-      <p>This is the home page</p>
-    </div>
   </BrowserRouter>
 );
 

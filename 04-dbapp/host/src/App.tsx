@@ -1,26 +1,32 @@
+import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomePage, Characters, AboutPage, NotFound } from "./pages";
+import { Error, Loader } from "./components";
 
 import Navbar from "mf_navbar/Navbar"; // Importación del componente Navbar desde otro microfrontend
-
 import "./index.css";
-import { Suspense } from "react";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const Characters = lazy(() => import("./pages/Characters"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const CharacterDetail = lazy(() => import("./pages/CharacterDetail"));
+
 
 const App = () => (
   <BrowserRouter>
-
-    <Suspense fallback={<div>Loading...</div>}>
+    <Error>
       <Navbar />
-    </Suspense>
+    </Error>
 
     {/* Rutas de la aplicación host */}
     <div className="p-6 bg-gray-300">
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/characters" element={<Characters />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="*" element={<NotFound />} /> // Ruta para manejar las rutas no encontradas
+        <Route path="/" element={<Suspense fallback={<Loader />}><HomePage /></Suspense>} />
+        <Route path="/characters" element={<Suspense fallback={<Loader />}><Characters /></Suspense>} />
+        <Route path="/characters/:id" element={<Suspense fallback={<Loader />}><CharacterDetail /></Suspense>} />
+        <Route path="/about" element={<Suspense fallback={<Loader />}><AboutPage /></Suspense>} />
+        <Route path="*" element={<Suspense fallback={<Loader />}><NotFound /></Suspense>} /> // Ruta para manejar las rutas no encontradas
       </Routes>
     </div>
   </BrowserRouter>
