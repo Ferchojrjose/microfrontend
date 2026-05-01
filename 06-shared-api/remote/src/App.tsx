@@ -1,11 +1,13 @@
 import ReactDOM from "react-dom/client";
 
+import Header from "./components/Header";
+
 import "./index.css";
+
 
 const App = () => (
   <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <div>Name: remote</div>
-    <div>Framework: react-19</div>
+    <Header />
   </div>
 );
 
